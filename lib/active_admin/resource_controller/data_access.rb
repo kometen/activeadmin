@@ -282,6 +282,10 @@ module ActiveAdmin
         end
       end
 
+      def max_csv_records
+        10_000
+      end
+
       def max_per_page
         10_000
       end
