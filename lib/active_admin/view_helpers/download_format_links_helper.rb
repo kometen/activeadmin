@@ -24,7 +24,7 @@ module ActiveAdmin
         # @see add_format for information on adding custom download link
         # formats
         def formats
-          @formats ||= [:csv, :xml, :json]
+          @formats ||= [:csv, :xml, :json, :xlsx]
           @formats.clone
         end
 
