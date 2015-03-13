@@ -39,7 +39,6 @@ module ActiveAdmin
       
       def stream_xlsx
         headers['Content-Disposition'] = %{attachment; filename="#{xlsx_filename}"}
-        stream_resource &active_admin_config.csv_builder.method(:build).to_proc.curry[self]
       end
 
     end
