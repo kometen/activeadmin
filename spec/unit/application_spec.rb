@@ -18,10 +18,6 @@ describe ActiveAdmin::Application do
     expect(ActiveSupport::Dependencies.autoload_paths).to_not include(File.join(Rails.root, "app/admin"))
   end
 
-  it "should add app/admin to the Engine's watchable directories (loaded after the app itself)" do
-    expect(ActiveAdmin::Engine.config.watchable_dirs).to have_key File.join(Rails.root, "app/admin")
-  end
-
   it "should store the site's title" do
     expect(application.site_title).to eq ""
   end
@@ -63,7 +59,7 @@ describe ActiveAdmin::Application do
   end
 
   it "should allow comments by default" do
-    expect(application.allow_comments).to eq true
+    expect(application.comments).to eq true
   end
 
   describe "authentication settings" do
@@ -121,10 +117,10 @@ describe ActiveAdmin::Application do
     end
 
     it "should not pollute the global app" do
-      expect(application.namespaces.keys).to be_empty
+      expect(application.namespaces).to be_empty
       application.namespace(:brand_new_ns)
-      expect(application.namespaces.keys).to eq [:brand_new_ns]
-      expect(ActiveAdmin.application.namespaces.keys).to eq [:admin]
+      expect(application.namespaces.names).to eq [:brand_new_ns]
+      expect(ActiveAdmin.application.namespaces.names).to eq [:admin]
     end
   end
 
